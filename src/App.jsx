@@ -6,7 +6,6 @@ const services=[
 ];
 const defaultUseful=[["Sistemas Servidores","#",Users],["Formulários e Processos","#",FileText],["Educação Corporativa","#",BookOpen],["Intranet Antiga","#",Monitor]];
 const nav=[["QUEM É QUEM","quem"],["DESENVOLVIMENTO","desenvolvimento"],["DOCUMENTOS","documentos"],["NOTÍCIAS","noticias"],["ANIVERSARIANTES","aniversariantes"],["TRÂNSITO","transito"],["DIGA AÍ","diga"]];
-const nav=[["QUEM É QUEM","quem"],["DESENVOLVIMENTO","desenvolvimento"],["DOCUMENTOS","documentos"],["NOTÍCIAS","noticias"],["ANIVERSARIANTES","aniversariantes"],["TRÂNSITO","transito"],["DIGA AÍ","diga"]];
 const go=id=>document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
 
 function Logo({type}){const base="logo-mark "+type;switch(type){
