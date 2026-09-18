@@ -28,8 +28,16 @@ default:return <div className={base}><b>e</b><span>e-Delegacia</span></div>}}
 function SectionTitle({icon:Icon,title}){return <div className="section-title"><Icon size={13}/><b>{title}</b></div>}
 function MiniCard({image,title,text}){return <article className="mini-card"><img src={image}/><div><b>{title}</b><small>{text}</small><a href="#">Acessar ›</a></div></article>}
 
+function loadLinks(){try{return JSON.parse(localStorage.getItem("sde-links")||"[]")}catch{return []}}
+function loadNotices(){try{return JSON.parse(localStorage.getItem("sde-notices")||"[]")}catch{return []}}
+
 export default function App(){
 const[q,setQ]=useState("");const filtered=services.filter(s=>s[0].toLowerCase().includes(q.toLowerCase()));
+const[admin,setAdmin]=useState(false);const[links,setLinks]=useState(loadLinks);const[notices,setNotices]=useState(loadNotices);const[linkForm,setLinkForm]=useState({name:"",url:"",category:"Links Úteis",newTab:true});const[noticeForm,setNoticeForm]=useState({title:"",text:""});
+const saveLinks=v=>{setLinks(v);localStorage.setItem("sde-links",JSON.stringify(v))};
+const saveNotices=v=>{setNotices(v);localStorage.setItem("sde-notices",JSON.stringify(v))};
+const addLink=e=>{e.preventDefault();if(!linkForm.name||!linkForm.url)return;saveLinks([...links,{...linkForm,id:Date.now()}]);setLinkForm({name:"",url:"",category:"Links Úteis",newTab:true})};
+const addNotice=e=>{e.preventDefault();if(!noticeForm.title)return;saveNotices([{...noticeForm,id:Date.now()},...notices]);setNoticeForm({title:"",text:""})};
 return <div className="site">
 <header><div className="header-main"><a className="brand" href="#inicio"><Logo type="gov"/><span className="brand-sep"/><strong>SECRETARIA DE<br/>DESENVOLVIMENTO ECONÔMICO</strong></a><div className="header-right"><div className="social">f　▶　◎　▥<small>Bahia. Aqui é trabalho.</small></div><div className="search"><Search size={13}/><input value={q} onChange={e=>setQ(e.target.value)} placeholder="Pesquisar na intranet"/></div></div></div><nav><button className="home" onClick={()=>go("inicio")}>⌂</button>{nav.map(([label,id])=><button key={id} onClick={()=>go(id)}>{label}</button>)}</nav></header>
 <main id="inicio">
