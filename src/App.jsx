@@ -1,6 +1,73 @@
-import React,{useState}from"react";import{ArrowRight,ExternalLink,FileText,Users,BriefcaseBusiness,Newspaper,CalendarDays,TrafficCone,MessageSquareText,Search,Building2,BookOpen,Link2}from"lucide-react";
-const services=[["SEI Bahia","https://www.portalseibahia.saeb.ba.gov.br/","Sistema Eletrônico de Informações"],["Office 365","https://outlook.office365.com/","Correio e serviços Microsoft"],["e-DOC","https://edoc.sde.ba.gov.br/","Gestão de documentos SDE"],["RH Bahia","https://rhbahia.ba.gov.br/","Serviços para servidores"],["SAC Digital","https://sacdigital.ba.gov.br/","Serviços digitais do Estado"],["Planserv","https://planserv.ba.gov.br/planserv","Portal oficial do servidor"],["Bahia + Inteligente","#","Soluções e informações do Estado"],["Sistema Gestor","#","Sistemas internos da SDE"],["AtenaTI","#","Serviços de tecnologia"],["Base de Informações","#","Bases e consultas internas"],["Fluxos SDE","#","Fluxos e processos internos"],["Manuais","#","Manuais e orientações"],["Sistema de Contatos","#","Contatos institucionais"],["Monitora Bahia","#","Acompanhamento de indicadores"]];
-const useful=[["Diário Oficial","https://www.egba.ba.gov.br/"],["Diário do Estado","https://www.ba.gov.br/"],["Comprasnet","https://www.gov.br/compras/pt-br"],["Ouvidoria Geral","https://www.ouvidoria.ba.gov.br/"],["Portal da Transparência","https://www.transparencia.ba.gov.br/"],["Governo da Bahia","https://www.ba.gov.br/"]];
-const nav=[["Início","inicio"],["Quem é Quem","quem"],["Gestão Estratégica","gestao"],["Documentos","docs"],["Notícias","noticias"],["Aniversariantes","aniversariantes"],["Trânsito","transito"],["Diga Aí","diga"]];const go=id=>document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
-function Head({Icon,title,sub}){return <div className="sect"><span><Icon size={17}/></span><div><b>{title}</b><small>{sub}</small></div></div>}
-export default function App(){const[q,setQ]=useState("");const list=services.filter(x=>(x[0]+" "+x[2]).toLowerCase().includes(q.toLowerCase()));return <div><div className="top"><span>SDE • Secretaria de Desenvolvimento Econômico</span><span>GOVERNO DO ESTADO DA BAHIA</span></div><header><div className="head"><a className="brand" href="#inicio"><strong>SDE</strong><div>Secretaria de<br/>Desenvolvimento Econômico<small>GOVERNO DO ESTADO <b>BAHIA</b></small></div></a><div className="tools"><label><Search size={16}/><input value={q} onChange={e=>setQ(e.target.value)} placeholder="O que você procura na intranet?"/></label><i>S</i><span>Olá, Servidor!<small>Área interna</small></span></div></div><nav>{nav.map(([n,id])=><button key={id} onClick={()=>go(id)}>{n}</button>)}<button onClick={()=>go("links")}>••• Mais</button></nav></header><main><section id="inicio" className="hero"><div><small>INTRANET SDE</small><h1>Juntos por uma Bahia <em>mais forte e desenvolvida.</em></h1><p>Serviços, notícias, documentos, eventos e informações para quem faz a SDE acontecer.</p><button onClick={()=>go("servicos")}>Conheça a Intranet <ArrowRight size={17}/></button></div></section><div className="quick">{services.slice(0,6).map(([t,u])=><a key={t} href={u} target="_blank">{t}</a>)}</div><div className="layout"><div><section className="panel" id="noticias"><Head Icon={Newspaper} title="Notícias em destaque" sub="Atualizações e informações da SDE"/><div className="newsgrid"><article className="feature"><small>DESTAQUE</small><h2>Informação, serviços e desenvolvimento em um só lugar.</h2><p>Conteúdos institucionais e informações da Secretaria de Desenvolvimento Econômico da Bahia.</p><a href="https://www.ba.gov.br/sde/noticias" target="_blank">Portal de Notícias <ArrowRight size={15}/></a></article><div className="news">{["Notícias e informações da Secretaria","Acompanhe as atualizações e iniciativas da SDE","Agenda, ações e resultados"].map(t=><a key={t} href="https://www.ba.gov.br/sde/noticias" target="_blank"><b>{t}</b><small>Portal SDE</small></a>)}</div></div></section><section className="panel" id="servicos"><Head Icon={Building2} title="Serviços e Sistemas" sub="Acessos preservados da intranet antiga"/><div className="services">{list.map(([t,u,d])=><a key={t} href={u} target={u==="#"?undefined:"_blank"}><span><Link2 size={17}/></span><div><b>{t}</b><small>{d}</small></div><ExternalLink size={14}/></a>)}</div></section><div className="cards">{[[Users,"quem","Quem é Quem","Estrutura e contatos da Secretaria"],[BriefcaseBusiness,"gestao","Gestão Estratégica","Planejamento e informações de gestão"],[FileText,"docs","Documentos","Materiais e documentos institucionais"],[Users,"servidor","Espaço do Servidor","Serviços e orientações"],[BookOpen,"cultura","Espaço Cultural","Arte, cultura e convivência"],[TrafficCone,"transito","Trânsito","Informações e comunicados"],[MessageSquareText,"diga","Diga Aí!","Participação e sugestões"],[CalendarDays,"aniversariantes","Aniversariantes","Celebre com a equipe"],[Newspaper,"midia","SDE na Mídia","Clipping Diário"]].map(([I,id,t,s])=><article id={id} key={id}><Head Icon={I} title={t} sub={s}/><p>Acesse conteúdos e informações desta área da intranet.</p></article>)}</div></div><aside id="links"><section className="side"><Head Icon={Link2} title="Links Úteis" sub="Portais e serviços externos"/>{useful.map(([t,u])=><a key={t} href={u} target="_blank">{t}<ExternalLink size={13}/></a>)}</section><section className="side gold"><Head Icon={CalendarDays} title="RH Informa" sub="Férias e orientações"/><h3>Férias</h3><p>Programação, aprovação e orientações de RH.</p><a href="https://rhbahia.ba.gov.br/" target="_blank">Acessar RH Bahia →</a></section><section className="side"><Head Icon={Newspaper} title="Portal SDE" sub="Notícias institucionais"/><p>Acesse o portal oficial da Secretaria de Desenvolvimento Econômico.</p><a href="https://www.ba.gov.br/sde/" target="_blank">Portal SDE →</a></section></aside></div></main><footer><div><b>SDE</b><p>Secretaria de Desenvolvimento Econômico<br/>Governo do Estado da Bahia</p></div><div><strong>INTRANET</strong><a href="#quem">Quem é Quem</a><a href="#gestao">Gestão Estratégica</a><a href="#docs">Documentos</a><a href="#noticias">Notícias</a></div><div><strong>SERVIÇOS</strong><a href="#servicos">Sistemas</a><a href="#servidor">Espaço do Servidor</a><a href="#cultura">Espaço Cultural</a><a href="#links">Links Úteis</a></div><div><strong>PORTAL</strong><a href="https://www.ba.gov.br/sde/" target="_blank">Portal SDE</a><a href="https://www.ba.gov.br/sde/noticias" target="_blank">Notícias</a></div></footer></div>}
+import React,{useState}from"react";
+import{Search,ChevronLeft,ChevronRight,ExternalLink,FileText,Users,BriefcaseBusiness,Newspaper,CalendarDays,TrafficCone,MessageSquareText,BookOpen,Link2,Globe2}from"lucide-react";
+
+const services=[
+["SEI Bahia","https://www.portalseibahia.saeb.ba.gov.br/","Sistema Servidor"],["Office 365","https://outlook.office365.com/","Office 365"],["e-DOC","https://edoc.sde.ba.gov.br/","Documentos"],["RH Bahia","https://rhbahia.ba.gov.br/","RH Bahia"],["Fluxos SDE","#","Fluxos SDE"],["Manuais","#","Manuais"],["Wiki SDE","#","Wiki SDE"],["Monitora Bahia","#","Monitora Bahia"]
+];
+const useful=[["Diário Oficial","https://www.egba.ba.gov.br/"],["Comprasnet","https://www.gov.br/compras/pt-br"],["Transparência","https://www.transparencia.ba.gov.br/"],["Governo da Bahia","https://www.ba.gov.br/"]];
+const nav=[["QUEM É QUEM","quem"],["DESENVOLVIMENTO","desenvolvimento"],["DOCUMENTOS","documentos"],["NOTÍCIAS","noticias"],["ANIVERSARIANTES","aniversariantes"],["TRÂNSITO","transito"],["DIGA AÍ","diga"]];
+const go=id=>document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
+
+function SectionTitle({icon:Icon,title}){return <div className="section-title"><Icon size={13}/><b>{title}</b></div>}
+function MiniCard({image,title,text}){return <article className="mini-card"><img src={image}/><div><b>{title}</b>{text&&<small>{text}</small>}</div></article>}
+
+export default function App(){
+const[q,setQ]=useState("");
+const filtered=services.filter(s=>s[0].toLowerCase().includes(q.toLowerCase()));
+return <div className="site">
+<header>
+  <div className="header-main">
+    <a className="logo" href="#inicio"><span className="gov">Estado<br/>da Bahia</span><strong>SDE</strong></a>
+    <div className="header-tools">
+      <div className="search"><Search size={13}/><input value={q} onChange={e=>setQ(e.target.value)} placeholder="Pesquisar na intranet"/></div>
+      <span className="login">Área do servidor</span>
+    </div>
+  </div>
+  <nav>{nav.map(([label,id])=><button key={id} onClick={()=>go(id)}>{label}</button>)}</nav>
+</header>
+
+<main id="inicio">
+  <section className="hero">
+    <button className="slide prev"><ChevronLeft size={18}/></button>
+    <div className="hero-image">
+      <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1500&q=85"/>
+      <div className="hero-copy"><small>NOTÍCIA</small><h1>SECRETARIA LANÇA PROGRAMA<br/>DE INCENTIVO À ECONOMIA<br/>CRIATIVA NA BAHIA</h1><p>Nova edição disponibiliza recursos para projetos de cultura, inovação e desenvolvimento criativo.</p><a href="https://www.ba.gov.br/sde/noticias" target="_blank">LER COMUNICADO <ChevronRight size={12}/></a></div>
+    </div>
+    <button className="slide next"><ChevronRight size={18}/></button>
+  </section>
+
+  <div className="content-grid">
+    <div className="main-column">
+      <section id="servicos" className="block">
+        <SectionTitle icon={Globe2} title="Serviços"/>
+        <div className="services-grid">{filtered.map(([title,url,sub])=><a className="service" key={title} href={url} target={url!=="#"?"_blank":undefined}><span className="service-icon"><Link2 size={17}/></span><b>{title}</b><small>{sub}</small></a>)}</div>
+      </section>
+
+      <div className="two-cols">
+        <section className="block" id="servidor"><SectionTitle icon={Users} title="Espaço do Servidor"/><MiniCard image="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=700&q=80" title="Serviços e informações do servidor" text="Orientações, benefícios e atendimento." /></section>
+        <section className="block" id="cultura"><SectionTitle icon={BookOpen} title="Espaço Cultural"/><MiniCard image="https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=700&q=80" title="Cultura e eventos da SDE" text="Conheça as ações culturais." /></section>
+      </div>
+
+      <div className="two-cols">
+        <section className="block" id="noticias"><SectionTitle icon={Newspaper} title="Espaço Notícias"/><MiniCard image="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=700&q=80" title="SECRETARIA LANÇA PROGRAMA DE INCENTIVO À ECONOMIA CRIATIVA NA BAHIA" text="Leia as principais notícias da Secretaria." /></section>
+        <section className="block"><SectionTitle icon={Newspaper} title="Clipping Diário"/><div className="date"><b>19/06</b><span>data do dia</span></div><p className="muted">Principais notícias e menções à Secretaria.</p></section>
+      </div>
+
+      <div className="two-cols">
+        <section className="block" id="desenvolvimento"><SectionTitle icon={BriefcaseBusiness} title="Desenvolvimento"/><p className="muted">Informações, programas e iniciativas de desenvolvimento econômico.</p></section>
+        <section className="block" id="diga"><SectionTitle icon={MessageSquareText} title="Diga Aí!"/><p className="muted">Uma ideia, sugestão ou contribuição? Envie para a SDE.</p></section>
+      </div>
+    </div>
+
+    <aside>
+      <section className="side-card" id="links"><SectionTitle icon={Link2} title="Links úteis"/><div className="useful-grid">{useful.map(([t,u])=><a href={u} target="_blank" key={t}><span><ExternalLink size={11}/></span>{t}</a>)}</div></section>
+      <section className="side-card media"><SectionTitle icon={Newspaper} title="SDE na Mídia"/><img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80"/><b>Uma visão integrada sobre inovação e desenvolvimento.</b><small>Confira notícias e conteúdos relacionados à SDE.</small></section>
+      <section className="side-card rh" id="aniversariantes"><SectionTitle icon={CalendarDays} title="RH Informa"/><div className="notice"><b>NOTA</b><p>Confira orientações, férias, benefícios e comunicados do RH Bahia.</p></div><a href="https://rhbahia.ba.gov.br/" target="_blank">Acessar RH Bahia →</a></section>
+      <section className="side-card"><SectionTitle icon={Users} title="Aniversariantes"/><p className="muted">Celebre com os colegas da Secretaria.</p></section>
+    </aside>
+  </div>
+</main>
+
+<footer><div className="footer-brand"><span className="gov">Estado<br/>da Bahia</span><strong>SDE</strong></div><div>SECRETARIA DE DESENVOLVIMENTO ECONÔMICO<br/><small>Governo do Estado da Bahia</small></div><div className="footer-links">DOCUMENTOS &nbsp; | &nbsp; PRIVACIDADE &nbsp; | &nbsp; CONTATO</div></footer>
+</div>
+}
