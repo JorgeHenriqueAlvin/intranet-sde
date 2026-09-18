@@ -79,3 +79,14 @@ footer{padding:20px clamp(16px,4vw,42px);min-height:82px;font-size:8px}
 .hero-caption h2{font-family:Georgia,serif!important;font-size:clamp(15px,1.45vw,22px)!important;line-height:1.15!important;font-weight:700!important}
 @media(max-width:700px){.hero-caption h2{font-size:16px!important}}
 @media(max-width:480px){.hero-caption h2{font-size:14px!important}}
+
+/* Refinamento visual do destaque, inspirado em portal institucional */
+.hero{background:#f3f7f9!important;border-bottom:1px solid #e2eaed;box-sizing:border-box}
+.hero-image{box-shadow:0 8px 26px rgba(20,61,77,.12)!important}
+.hero-caption{box-shadow:0 8px 22px rgba(20,61,77,.08)!important;padding:16px 22px 17px!important}
+.hero-caption .hero-date{font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.hero-caption h2{font-family:Georgia,serif!important;color:#173f51!important;font-size:clamp(15px,1.35vw,21px)!important;font-weight:700!important}
+.hero-caption p{max-width:900px}
+.hero-caption a{padding-top:2px;text-transform:uppercase;letter-spacing:.02em}
+.hero-dots button{background:#7e9aa5!important;border-color:#7e9aa5!important}.hero-dots button.active{background:#167392!important;border-color:#167392!important}
+@media(max-width:700px){.hero-caption{padding:13px 15px 14px!important}.hero-caption h2{font-size:16px!important}.hero-caption p{margin-top:5px}.hero-image{box-shadow:0 5px 16px rgba(20,61,77,.1)!important}}
