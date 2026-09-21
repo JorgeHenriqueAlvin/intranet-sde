@@ -897,3 +897,13 @@ img{display:block;max-width:100%;height:auto;image-rendering:auto;-webkit-backfa
 .cms-nav{overflow-y:auto!important;min-height:0}
 .cms-content{overflow-y:auto!important;overflow-x:hidden!important;min-height:0!important;max-height:none!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding-bottom:80px!important}
 @media(max-width:760px){.admin-overlay{padding:0!important}.cms-panel{height:100dvh!important;max-height:100dvh!important}.cms-layout{overflow:hidden!important}.cms-nav{overflow-x:auto!important;overflow-y:hidden!important;flex:0 0 auto}.cms-content{height:auto!important;overflow-y:auto!important;padding-bottom:110px!important}}
+
+/* FIX DEFINITIVO — scroll nativo do modal admin */
+html:has(.admin-overlay),body:has(.admin-overlay){overflow:hidden!important}
+.admin-overlay{position:fixed!important;inset:0!important;height:100dvh!important;overflow-y:auto!important;overflow-x:hidden!important;display:block!important;padding:12px!important;-webkit-overflow-scrolling:touch!important}
+.admin-overlay .admin-panel.cms-panel{position:relative!important;inset:auto!important;margin:0 auto!important;width:min(1080px,100%)!important;height:auto!important;min-height:calc(100dvh - 24px)!important;max-height:none!important;overflow:visible!important;display:block!important}
+.admin-overlay .cms-panel .admin-head{position:sticky!important;top:0!important;z-index:50!important}
+.admin-overlay .cms-layout{display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;height:auto!important;min-height:0!important;overflow:visible!important}
+.admin-overlay .cms-nav{position:sticky!important;top:100px!important;align-self:start!important;max-height:calc(100dvh - 124px)!important;overflow-y:auto!important}
+.admin-overlay .cms-content{height:auto!important;max-height:none!important;overflow:visible!important;padding-bottom:120px!important}
+@media(max-width:760px){.admin-overlay{padding:0!important}.admin-overlay .admin-panel.cms-panel{width:100%!important;min-height:100dvh!important}.admin-overlay .cms-layout{display:block!important}.admin-overlay .cms-nav{position:sticky!important;top:92px!important;z-index:40!important;display:flex!important;flex-direction:row!important;max-height:none!important;overflow-x:auto!important;overflow-y:hidden!important}.admin-overlay .cms-content{overflow:visible!important;padding-bottom:140px!important}}
