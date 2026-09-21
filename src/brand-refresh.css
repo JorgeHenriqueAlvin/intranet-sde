@@ -1,0 +1,295 @@
+/* SDE — atualização de identidade visual, logos e ícones */
+:root{
+  --sde-brand:#08799d;
+  --sde-brand-dark:#123f52;
+  --sde-brand-cyan:#16a7cc;
+  --sde-brand-green:#8fba24;
+  --sde-brand-red:#d92f3b;
+  --sde-brand-blue:#2458a7;
+}
+
+/* marca institucional */
+.brand .logo-mark.gov,
+.footer-brand .logo-mark.gov{
+  position:relative;
+  min-width:128px!important;
+  height:52px!important;
+  gap:8px!important;
+  border:0!important;
+  background:transparent!important;
+}
+.brand .logo-mark.gov .crest,
+.footer-brand .logo-mark.gov .crest{
+  position:relative;
+  width:39px!important;
+  height:39px!important;
+  flex:0 0 39px;
+  border:0!important;
+  border-radius:11px!important;
+  background:linear-gradient(145deg,#08799d,#123f52)!important;
+  color:#fff!important;
+  font-size:18px!important;
+  box-shadow:0 7px 18px rgba(8,121,157,.2);
+}
+.brand .logo-mark.gov .crest:before,
+.footer-brand .logo-mark.gov .crest:before{
+  content:"";
+  position:absolute;
+  width:13px;height:13px;
+  border-radius:50%;
+  border:2px solid #fff;
+  top:7px;left:11px;
+  opacity:.95;
+}
+.brand .logo-mark.gov .crest:after,
+.footer-brand .logo-mark.gov .crest:after{
+  content:"";
+  position:absolute;
+  width:18px;height:3px;
+  border-radius:4px;
+  background:#8fe1f2;
+  left:10px;bottom:8px;
+}
+.brand .logo-mark.gov b{
+  font-family:Outfit,Arial,sans-serif!important;
+  font-size:9px!important;
+  line-height:1.03!important;
+  font-weight:800!important;
+  letter-spacing:.02em;
+  color:#173f51!important;
+  text-align:left;
+}
+.footer-brand .logo-mark.gov b{
+  font-family:Outfit,Arial,sans-serif!important;
+  font-size:7px!important;
+  color:#fff!important;
+}
+
+/* logos dos serviços — desenho vetorial leve, sem perda de nitidez */
+.service .logo-mark:not(.custom),
+.service-admin-row .logo-mark:not(.custom){
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+.service .logo-mark:not(.custom):before,
+.service-admin-row .logo-mark:not(.custom):before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  border-radius:inherit;
+  background:linear-gradient(135deg,#fff,#f4fafc);
+}
+
+/* SEI */
+.service .logo-mark.sei,
+.service-admin-row .logo-mark.sei{color:#00a4dc!important}
+.service .logo-mark.sei:after,
+.service-admin-row .logo-mark.sei:after{
+  content:"SEI";
+  font-weight:900;
+  font-size:29px;
+  letter-spacing:-.08em;
+  color:#04a6dc;
+  text-shadow:1px 0 0 #04a6dc;
+}
+.service .logo-mark.sei b,.service-admin-row .logo-mark.sei b{display:none}
+.service .logo-mark.sei:before,
+.service-admin-row .logo-mark.sei:before{
+  background:linear-gradient(180deg,#fafdfe,#eef8fb);
+  border-bottom:4px solid #8dbb20;
+}
+
+/* RH Bahia */
+.service .logo-mark.rh,
+.service-admin-row .logo-mark.rh{flex-direction:row!important;gap:4px!important}
+.service .logo-mark.rh:before,
+.service-admin-row .logo-mark.rh:before{
+  width:24px;height:24px;inset:auto;
+  left:50%;top:5px;transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#315ca9 0 38%,transparent 39%),
+             radial-gradient(circle at 68% 65%,#d52d43 0 38%,transparent 39%);
+  z-index:0;
+}
+.service .logo-mark.rh i{display:none}
+.service .logo-mark.rh b{
+  z-index:2;
+  margin-top:25px;
+  font-size:10px!important;
+  color:#193e7c!important;
+  line-height:1!important;
+}
+
+/* SAC Digital */
+.service .logo-mark.sac{flex-direction:row!important;gap:6px!important}
+.service .logo-mark.sac i{display:block!important;font-size:0!important;width:29px;height:29px;border-radius:50%;background:conic-gradient(#d32f3e 0 25%,#fff 25% 38%,#155a9d 38% 72%,#fff 72% 84%,#d32f3e 84%);box-shadow:inset 0 0 0 5px #fff}
+.service .logo-mark.sac b{font-size:17px!important;color:#1a2b5b!important}
+.service .logo-mark.sac small{font-size:7px!important;color:#d32f3e!important}
+
+/* Planserv */
+.service .logo-mark.plan b{font-family:Outfit,Arial,sans-serif!important;color:#2458a7!important;font-size:18px!important}
+.service .logo-mark.plan b:first-letter{color:#2a65ad}
+.service .logo-mark.plan em{font-style:italic;font-weight:800}
+
+/* Office */
+.service .logo-mark.office{flex-direction:row!important;gap:7px!important;color:#ef4f22!important}
+.service .logo-mark.office b{
+  font-size:0!important;
+  width:29px;height:29px;
+  background:conic-gradient(from 90deg,#ef4f22 0 25%,transparent 25% 50%,#ef4f22 50% 75%,transparent 75%);
+  clip-path:polygon(0 0,100% 0,100% 100%,0 76%);
+}
+.service .logo-mark.office span{font-size:10px!important;color:#e84d22!important;font-weight:800}
+
+/* e-DOC */
+.service .logo-mark.edoc{flex-direction:row!important;gap:0!important}
+.service .logo-mark.edoc b{font-size:24px!important;color:#398fbd!important;font-family:Outfit,Arial,sans-serif!important}
+.service .logo-mark.edoc b span{color:#64727b!important;font-size:20px!important}
+
+/* Wiki */
+.service .logo-mark.wiki{flex-direction:row!important;gap:7px!important}
+.service .logo-mark.wiki b{
+  width:34px;height:34px;
+  font-size:0!important;
+  border-radius:9px;
+  background:conic-gradient(#ef6b47,#efc643,#7abf58,#38a7c7,#4566a9,#ef6b47);
+  clip-path:polygon(50% 0,100% 22%,84% 100%,16% 100%,0 22%);
+}
+.service .logo-mark.wiki span{font-size:10px!important;color:#293b48!important;font-weight:900}
+
+/* Bahia Mais Inteligente */
+.service .logo-mark.bmi{flex-direction:row!important;gap:7px!important}
+.service .logo-mark.bmi b{
+  font-size:0!important;
+  width:34px;height:34px;
+  border-radius:10px 15px 10px 15px;
+  background:linear-gradient(145deg,#20b6ff,#2457b7);
+  position:relative;
+}
+.service .logo-mark.bmi b:after{
+  content:"B";
+  position:absolute;inset:0;
+  display:grid;place-items:center;
+  color:#fff;font-size:25px;font-weight:900;
+}
+.service .logo-mark.bmi span{font-size:7px!important;color:#101820!important;font-weight:900}
+
+/* AtenaTI */
+.service .logo-mark.atena{flex-direction:row!important;gap:6px!important}
+.service .logo-mark.atena b{
+  font-size:0!important;width:32px;height:32px;
+  clip-path:polygon(50% 0,100% 28%,86% 100%,14% 100%,0 28%);
+  background:linear-gradient(145deg,#8bbf2b,#45a45a);
+}
+.service .logo-mark.atena span{font-size:10px!important;color:#2b3d48!important;font-weight:900}
+.service .logo-mark.atena span span{color:#168a9c!important}
+
+/* Manuais */
+.service .logo-mark.manual{flex-direction:row!important;gap:7px!important}
+.service .logo-mark.manual b{
+  font-size:0!important;width:34px;height:34px;border-radius:50%;
+  background:#0f8ca8;
+  position:relative;
+}
+.service .logo-mark.manual b:after{
+  content:"";
+  position:absolute;left:9px;top:7px;width:16px;height:20px;
+  border:2px solid #fff;border-radius:2px 7px 7px 2px;
+  transform:skewY(-5deg);
+}
+.service .logo-mark.manual span{font-size:9px!important;color:#2d596c!important;font-weight:900}
+
+/* Fluxos SDE */
+.service .logo-mark.fluxo{flex-direction:row!important;gap:6px!important}
+.service .logo-mark.fluxo svg{color:#244e69!important}
+.service .logo-mark.fluxo span{font-size:9px!important;color:#294f68!important;font-weight:900}
+
+/* Monitora */
+.service .logo-mark.monitora{flex-direction:row!important;gap:7px!important}
+.service .logo-mark.monitora b{font-size:0!important;width:33px;height:33px;border-radius:50%;border:3px solid #0b8eaa;position:relative}
+.service .logo-mark.monitora b:after{content:"";position:absolute;left:7px;right:7px;top:13px;border-top:3px solid #0b8eaa;transform:rotate(-25deg)}
+.service .logo-mark.monitora span{font-size:8px!important;color:#285266!important;font-weight:900}
+
+/* Help Desk */
+.service .logo-mark.help{
+  width:58px!important;height:38px!important;
+  border-radius:50%!important;
+  background:linear-gradient(180deg,#ff5a42,#a9160e)!important;
+  box-shadow:0 5px 9px rgba(120,20,15,.22)!important;
+  border:2px solid #8e160e;
+}
+.service .logo-mark.help:after{
+  content:"HELP";
+  color:#fff;font-size:9px;font-weight:900;letter-spacing:.08em;
+}
+.service .logo-mark.help b,.service .logo-mark.help span{display:none}
+
+/* e-Delegacia */
+.service .logo-mark.delegacia{flex-direction:row!important;gap:6px!important}
+.service .logo-mark.delegacia b{
+  font-size:0!important;width:33px;height:36px;
+  background:#3577ad;
+  clip-path:polygon(50% 0,90% 13%,86% 67%,50% 100%,14% 67%,10% 13%);
+}
+.service .logo-mark.delegacia b:after{content:"e";display:grid;place-items:center;height:100%;color:#fff;font-size:20px;font-weight:900}
+.service .logo-mark.delegacia span{font-size:8px!important;color:#304e5f!important;font-weight:900}
+
+/* sistema servidor */
+.service .logo-mark.gov:not(.custom){background:transparent!important}
+.service .logo-mark.gov:not(.custom):before{
+  content:"BA";
+  width:38px;height:38px;display:grid;place-items:center;
+  border-radius:11px;background:linear-gradient(145deg,#08799d,#123f52);
+  color:#fff;font-size:12px;font-weight:900;letter-spacing:.04em;
+}
+.service .logo-mark.gov:not(.custom) .crest{display:none}
+.service .logo-mark.gov:not(.custom) b{font-family:Outfit,Arial,sans-serif;font-size:8px;color:#17455a}
+
+/* uploads do painel continuam sendo tratados como imagem real */
+.logo-mark.custom{background:#fff!important;border:1px solid #e3edf0!important}
+.logo-mark.custom img{object-fit:contain!important;image-rendering:auto!important}
+
+/* Ícones de seção e navegação */
+.section-title svg{stroke-width:2.1!important}
+nav .home{
+  width:38px!important;
+  min-width:38px!important;
+  height:30px!important;
+  border-radius:9px!important;
+  background:#eef8fb!important;
+  font-size:0!important;
+}
+nav .home:before{
+  content:"⌂";
+  font-size:17px;
+  font-weight:800;
+  color:#08799d;
+}
+.mobile-toggle{font-size:0!important}
+.mobile-toggle:before{content:"☰";font-size:21px}
+
+/* botão admin com ícone mais limpo */
+.admin-fab{letter-spacing:.01em!important}
+.admin-fab:first-letter{font-size:15px}
+
+/* microdetalhes de identidade */
+.header-main:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;height:2px;
+  background:linear-gradient(90deg,#08799d 0 45%,#8dbb20 45% 68%,#d72f3d 68% 82%,#f0b62e 82% 100%);
+  opacity:.55;
+}
+.header-main{position:relative}
+.footer-brand strong{letter-spacing:.02em}
+@media(max-width:700px){
+  .brand .logo-mark.gov{min-width:78px!important}
+  .brand .logo-mark.gov .crest{width:30px!important;height:30px!important;flex-basis:30px}
+  .brand .logo-mark.gov .crest:before{width:10px;height:10px;left:9px;top:6px}
+  .brand .logo-mark.gov .crest:after{width:14px;left:8px;bottom:6px}
+  .brand .logo-mark.gov b{font-size:7px!important}
+}
