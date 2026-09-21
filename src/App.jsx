@@ -42,6 +42,7 @@ default:return <div className={base}><b>e</b><span>e-Delegacia</span></div>}}
 function SectionTitle({icon:Icon,title}){return <div className="section-title"><Icon size={13}/><b>{title}</b></div>}
 function MiniCard({image,title,text}){return <article className="mini-card"><img src={image}/><div><b>{title}</b><small>{text}</small><a href="#">Acessar ›</a></div></article>}
 
+async function optimizeImage(file,{maxWidth=2400,maxHeight=1400,quality=.92}={}){return new Promise((resolve,reject)=>{const url=URL.createObjectURL(file);const img=new Image();img.onload=()=>{try{const ratio=Math.min(1,maxWidth/img.naturalWidth,maxHeight/img.naturalHeight);const w=Math.max(1,Math.round(img.naturalWidth*ratio));const h=Math.max(1,Math.round(img.naturalHeight*ratio));const canvas=document.createElement("canvas");canvas.width=w;canvas.height=h;const ctx=canvas.getContext("2d",{alpha:true});ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality="high";ctx.drawImage(img,0,0,w,h);canvas.toBlob(blob=>{URL.revokeObjectURL(url);if(!blob){reject(new Error("Falha ao processar imagem"));return}const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob)}, "image/webp",quality)}catch(error){URL.revokeObjectURL(url);reject(error)}};img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("Imagem inválida"))};img.decoding="async";img.src=url})}
 function loadLinks(){try{return JSON.parse(localStorage.getItem("sde-links")||"[]")}catch{return []}}
 function loadNotices(){try{return JSON.parse(localStorage.getItem("sde-notices")||"[]")}catch{return []}}
 function loadBanners(){try{return JSON.parse(localStorage.getItem("sde-banners")||"null")||[] }catch{return []}}
@@ -52,7 +53,7 @@ const[q,setQ]=useState("");const[services,setServices]=useState(loadServices);co
 const[banners,setBanners]=useState(loadBanners);const[slide,setSlide]=useState(0);const[mobileMenu,setMobileMenu]=useState(false);const[admin,setAdmin]=useState(false);const[links,setLinks]=useState(loadLinks);const[serviceForm,setServiceForm]=useState({id:null,title:"",url:"",logo:"",type:"manual",visible:true});const[notices,setNotices]=useState(loadNotices);const[bannerForm,setBannerForm]=useState({id:null,image:"",title:"",text:"",url:"",visible:true});const[linkForm,setLinkForm]=useState({name:"",url:"",category:"Links Úteis",newTab:true});const[noticeForm,setNoticeForm]=useState({title:"",text:""});
 const notify=message=>{setToast(message);window.clearTimeout(notify.timer);notify.timer=window.setTimeout(()=>setToast(""),2600)};\nconst saveLinks=v=>{setLinks(v);localStorage.setItem("sde-links",JSON.stringify(v));notify("Link atualizado com sucesso.")};
 const saveServices=v=>{setServices(v);localStorage.setItem("sde-services",JSON.stringify(v));notify("Serviço atualizado com sucesso.")};
-const handleLogo=e=>{const file=e.target.files?.[0];if(!file)return;const reader=new FileReader();reader.onload=()=>setServiceForm(v=>({...v,logo:reader.result}));reader.readAsDataURL(file)};
+const handleLogo=async e=>{const file=e.target.files?.[0];if(!file)return;try{const logo=await optimizeImage(file,{maxWidth:1600,maxHeight:900,quality:.95});setServiceForm(v=>({...v,logo}))}catch{notify("Não foi possível processar a logo.")}};
 const editService=s=>setServiceForm({...s});
 const newService=()=>setServiceForm({id:null,title:"",url:"",logo:"",type:"manual",visible:true});
 const saveService=e=>{e.preventDefault();if(!serviceForm.title){notify("Informe o nome do serviço.");return}if(!serviceForm.url){notify("Informe o endereço do serviço.");return}const item={...serviceForm,id:serviceForm.id||Date.now()};saveServices(serviceForm.id?services.map(s=>s.id===serviceForm.id?item:s):[...services,item]);newService()};
@@ -64,7 +65,7 @@ const defaultSlides=[
 ];
 const visibleBanners=banners.filter(b=>b.visible!==false);const slides=visibleBanners.length?visibleBanners:defaultSlides;
 const saveBanners=v=>{setBanners(v);localStorage.setItem("sde-banners",JSON.stringify(v));setSlide(0);notify("Banner atualizado com sucesso.")};
-const handleBannerImage=e=>{const file=e.target.files?.[0];if(!file)return;const reader=new FileReader();reader.onload=()=>setBannerForm(v=>({...v,image:reader.result}));reader.readAsDataURL(file)};
+const handleBannerImage=async e=>{const file=e.target.files?.[0];if(!file)return;try{const image=await optimizeImage(file,{maxWidth:2400,maxHeight:1400,quality:.92});setBannerForm(v=>({...v,image}))}catch{notify("Não foi possível processar a imagem do banner.")}};
 const editBanner=b=>setBannerForm({...b});
 const newBanner=()=>setBannerForm({id:null,image:"",title:"",text:"",url:"",visible:true});
 const saveBanner=e=>{e.preventDefault();if(!bannerForm.title){notify("Informe o título da notícia.");return}if(!bannerForm.image){notify("Escolha uma imagem para o banner.");return}const item={...bannerForm,id:bannerForm.id||Date.now()};saveBanners(bannerForm.id?banners.map(b=>b.id===bannerForm.id?item:b):[...banners,item]);newBanner()};
