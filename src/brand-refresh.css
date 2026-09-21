@@ -343,3 +343,7 @@ body{background:var(--sde-paper)!important;color:var(--sde-ink)!important}
 .cms-nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;width:100%!important;box-sizing:border-box!important;overflow:visible!important}
 .cms-nav button{width:100%!important;min-width:0!important;max-width:none!important;white-space:normal!important;padding:8px 5px!important;font-size:11px!important;line-height:1.15!important}
 @media(max-width:360px){.cms-nav{grid-template-columns:1fr!important}.cms-nav button{font-size:12px!important}}
+
+
+/* Painel administrativo: navegação separada e leitura ampliada */
+.cms-shell{width:min(1120px,calc(100vw - 32px))!important;max-width:1120px!important}.cms-panel{width:min(980px,calc(100vw - 48px))!important;max-width:980px!important;max-height:88vh!important;overflow:auto!important;padding:28px!important}.cms-nav{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;margin-bottom:24px!important}.cms-nav button{min-height:42px!important;font-size:12px!important;white-space:normal!important}.cms-section{border:1px solid rgba(15,55,92,.12)!important;border-radius:16px!important;padding:20px!important;background:#fff!important;box-shadow:0 12px 30px rgba(15,55,92,.06)!important}.cms-section h3{margin-top:0!important}@media(max-width:760px){.cms-panel{width:calc(100vw - 24px)!important;padding:18px!important}.cms-nav{grid-template-columns:repeat(2,minmax(0,1fr))!important}}@media(max-width:420px){.cms-nav{grid-template-columns:1fr!important}}
