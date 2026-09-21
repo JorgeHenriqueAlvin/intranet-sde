@@ -888,3 +888,12 @@ img{display:block;max-width:100%;height:auto;image-rendering:auto;-webkit-backfa
 .cms-content .admin-form h4{margin:12px 0 0;padding-top:14px;border-top:1px solid #e1ebef;color:#0a536b}
 .cms-footer-note{max-width:820px;margin:20px 0!important}
 @media(max-width:760px){.cms-layout{grid-template-columns:1fr}.cms-nav{position:sticky;top:0;z-index:15;flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid #dce8ed;padding:10px}.cms-nav button{white-space:nowrap}.cms-content{padding:14px;max-height:none}.cms-panel{width:100vw!important;border-radius:0!important}}
+
+/* FIX: rolagem do painel administrativo */
+.admin-overlay{overflow-y:auto!important;overscroll-behavior:contain}
+.cms-panel{height:calc(100vh - 24px)!important;max-height:calc(100vh - 24px)!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+.cms-panel .admin-head{flex:0 0 auto}
+.cms-layout{flex:1 1 auto!important;min-height:0!important;overflow:hidden!important}
+.cms-nav{overflow-y:auto!important;min-height:0}
+.cms-content{overflow-y:auto!important;overflow-x:hidden!important;min-height:0!important;max-height:none!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding-bottom:80px!important}
+@media(max-width:760px){.admin-overlay{padding:0!important}.cms-panel{height:100dvh!important;max-height:100dvh!important}.cms-layout{overflow:hidden!important}.cms-nav{overflow-x:auto!important;overflow-y:hidden!important;flex:0 0 auto}.cms-content{height:auto!important;overflow-y:auto!important;padding-bottom:110px!important}}
