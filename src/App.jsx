@@ -20,7 +20,7 @@ const defaultServices=[
 {id:15,title:"e-Delegacia",url:"#",type:"delegacia",logo:"",visible:true}
 ];
 const legacyServiceTypes=new Set(defaultServices.map(s=>s.type));
-const defaultUseful=[["Sistemas Servidores","#",Users],["Formulários e Processos","#",FileText],["Educação Corporativa","#",BookOpen],["Intranet Antiga","#",Monitor]];
+const defaultUseful=[["Diário Oficial","https://dool.egba.ba.gov.br/",FileText],["Sistemas Servidores","#",Users],["Formulários e Processos","#",FileText],["Educação Corporativa","#",BookOpen],["Intranet Antiga","http://intranet.sde.ba.gov.br/wordpress/",Monitor]];
 const nav=[["QUEM É QUEM","quem"],["DESENVOLVIMENTO","desenvolvimento"],["DOCUMENTOS","documentos"],["NOTÍCIAS","noticias"],["ANIVERSARIANTES","aniversariantes"],["TRÂNSITO","transito"],["DIGA AÍ","diga"]];
 const go=id=>document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
 
@@ -81,8 +81,10 @@ const saveBanner=e=>{e.preventDefault();if(!bannerForm.title){notify("Informe o 
 const deleteBanner=id=>saveBanners(banners.filter(b=>b.id!==id));
 useEffect(()=>{const t=setInterval(()=>setSlide(v=>(v+1)%slides.length),6000);return()=>clearInterval(t)},[slides.length]);
 const saveNotices=v=>{setNotices(v);localStorage.setItem("sde-notices",JSON.stringify(v));notify("Aviso atualizado com sucesso.")};
-const addLink=e=>{e.preventDefault();if(!linkForm.name){notify("Informe o nome do link.");return}if(!linkForm.url){notify("Informe o endereço do link.");return}saveLinks([...links,{...linkForm,id:Date.now()}]);setLinkForm({name:"",url:"",category:"Links Úteis",newTab:true})};
+const editLink=l=>setLinkForm({...l});
+const addLink=e=>{e.preventDefault();if(!linkForm.name){notify("Informe o nome do link.");return}if(!linkForm.url){notify("Informe o endereço do link.");return}const item={...linkForm,id:linkForm.id||Date.now()};saveLinks(linkForm.id?links.map(l=>l.id===linkForm.id?item:l):[...links,item]);setLinkForm({name:"",url:"",category:"Links Úteis",newTab:true})};
 const addNotice=e=>{e.preventDefault();if(!noticeForm.title){notify("Informe o título do aviso.");return}saveNotices([{...noticeForm,id:Date.now()},...notices]);setNoticeForm({title:"",text:""})};
+const usefulItems=[...defaultUseful.map(([name,url,Icon])=>({name,url,Icon,newTab:url!=="#"})),...links.map(l=>({name:l.name,url:l.url,Icon:Link2,newTab:l.newTab!==false}))];
 return <div className="site">
 <header><div className="header-main"><a className="brand" href="#inicio">{siteContent.logoHeader?<img className="site-brand-logo" src={siteContent.logoHeader} alt="Logo institucional"/>:<Logo type="gov"/>}<span className="brand-sep"/><strong>{siteContent.secretaria}</strong></a><div className="header-right"><div className="social">f　▶　◎　▥<small>Bahia. Aqui é trabalho.</small></div><div className="search"><Search size={13}/><input aria-label="Pesquisar na intranet" value={q} onChange={e=>setQ(e.target.value)} placeholder="Pesquisar na intranet"/></div></div></div><nav className={mobileMenu?"open":""}><button type="button" className="mobile-toggle" onClick={()=>setMobileMenu(v=>!v)} aria-label={mobileMenu?"Fechar menu":"Abrir menu"} aria-expanded={mobileMenu}>☰</button><button className="home" onClick={()=>go("inicio")}>⌂</button>{[[siteContent.navQuem,"quem"],[siteContent.navDesenvolvimento,"desenvolvimento"],[siteContent.navDocumentos,"documentos"],[siteContent.navNoticias,"noticias"],[siteContent.navAniversariantes,"aniversariantes"],[siteContent.navTransito,"transito"],[siteContent.navDiga,"diga"]].map(([label,id])=><button key={id} onClick={()=>{go(id);setMobileMenu(false)}}>{label}</button>)}</nav></header>
 <main id="inicio">
