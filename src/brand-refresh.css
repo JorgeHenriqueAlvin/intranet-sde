@@ -323,3 +323,10 @@ body{background:var(--sde-paper)!important;color:var(--sde-ink)!important}
 .hero,.featured,.news-hero{border-radius:18px!important;overflow:hidden!important;box-shadow:0 18px 44px rgba(7,26,43,.16)!important}
 .admin-panel{background:rgba(255,255,255,.98)!important;border-left:4px solid var(--sde-gold)!important}
 @media(max-width:700px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.logo-mark{min-height:64px!important}}
+
+
+/* Painel administrativo — navegação de seções sempre visível */
+.cms-nav{display:flex!important;flex-wrap:wrap!important;gap:8px!important;padding:10px 0 16px!important;border-bottom:1px solid #dce5eb!important;position:sticky!important;top:0!important;background:#fff!important;z-index:5!important}
+.cms-nav button{display:inline-flex!important;align-items:center!important;min-height:38px!important;padding:9px 14px!important;border:1px solid #d5e1e8!important;border-radius:9px!important;background:#f7fafc!important;color:#0b4168!important;font-weight:700!important;cursor:pointer!important}
+.cms-nav button:hover,.cms-nav button.active{background:#0b4168!important;color:#fff!important;border-color:#0b4168!important}
+.admin-panel aside,.admin-drawer{overflow-y:auto!important}
